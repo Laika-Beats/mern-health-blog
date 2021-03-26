@@ -32,6 +32,18 @@ router.post("/", async (req, res) => {
   }
 });
 
+// DELETE Post
+router.delete("/:id", getPost, async (req, res) => {
+  try {
+    await res.post.remove();
+    res.json({ message: "Post has been deleted." });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
+// UPDATE Post
+
 // Middleware
 async function getPost(req, res, next) {
   let post;
