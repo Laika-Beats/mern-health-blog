@@ -43,6 +43,20 @@ router.delete("/:id", getPost, async (req, res) => {
 });
 
 // UPDATE Post
+router.patch("/:id", getPost, async (req, res) => {
+  if (req.body.message != null) {
+    res.post.message = req.body.message;
+  }
+  if (req.body.cateogry != null) {
+    res.post.category = req.body.category;
+  }
+  try {
+    const updatedPost = await res.post.save();
+    res.json(updatedPost);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+});
 
 // Middleware
 async function getPost(req, res, next) {
