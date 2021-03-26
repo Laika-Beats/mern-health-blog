@@ -27,4 +27,19 @@ router.post("/", async (req, res) => {
   }
 });
 
+// Middleware
+async function getPost(req, res, next) {
+  let post;
+  try {
+    post = await Post.findById(req.params.id);
+    if (post === null) {
+      return status(404).json({ message: "Cannot find blog post." });
+    }
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+  res.post = post;
+  next();
+}
+
 module.exports = router;
