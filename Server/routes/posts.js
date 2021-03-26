@@ -13,6 +13,11 @@ router.get("/", async (req, res) => {
   }
 });
 
+// GET ONE Post
+router.get("/:id", getPost, (req, res) => {
+  res.json(res.post);
+});
+
 // CREATE Post
 router.post("/", async (req, res) => {
   const post = new Post({
