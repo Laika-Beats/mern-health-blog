@@ -1,5 +1,13 @@
+import BlogFeed from "./components/BlogFeed";
+import CreateEntry from "./components/CreateEntry";
+
 const App = () => {
-  return <div>APP</div>;
+  return (
+    <div>
+      <CreateEntry />
+      <BlogFeed />
+    </div>
+  );
 };
 
 export default App;
